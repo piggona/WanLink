@@ -34,9 +34,9 @@ xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 
 
 class BannerAdmin(object):
-    list_display = ['title', 'image', 'url', 'index', 'add_time']  # 显示的数据项
-    search_fields = ['title', 'image', 'url', 'index']  # 可供搜索的项目
-    list_filter = ['title', 'image', 'url', 'index', 'add_time']  # 过滤器包含的项目（选项）
+    list_display = ['title', 'image', 'subtitle', 'url', 'index', 'add_time']  # 显示的数据项
+    search_fields = ['title', 'image', 'subtitle', 'url', 'index']  # 可供搜索的项目
+    list_filter = ['title', 'image', 'subtitle', 'url', 'index', 'add_time']  # 过滤器包含的项目（选项）
 
 
 xadmin.site.register(Banner, BannerAdmin)
@@ -106,9 +106,9 @@ xadmin.site.register(ServiceImage, ServiceImageAdmin)
 
 
 class DocumentAdmin(object):
-    list_display = ['DocumentId', 'DocumentName', 'Document', 'DocumentImage', 'add_time']
-    search_field = ['DocumentId', 'DocumentName', 'Document', 'DocumentImage']
-    list_filter = ['DocumentId', 'DocumentName', 'Document', 'DocumentImage', 'add_time']
+    list_display = ['DocumentId', 'DocumentName', 'DocumentIntro', 'Document', 'DocumentImage', 'add_time']
+    search_field = ['DocumentId', 'DocumentName', 'DocumentIntro', 'Document', 'DocumentImage']
+    list_filter = ['DocumentId', 'DocumentName', 'DocumentIntro', 'Document', 'DocumentImage', 'add_time']
 
 
 xadmin.site.register(Document, DocumentAdmin)

@@ -39,51 +39,17 @@
         <!-- Slider-Starts-Here -->
         <div class="slider">
             <ul class="rslides" id="slider">
-
-                <li>
-                    <img src="../static/images/1.jpg" alt="Tradeaux">
+                {% for b_title in Banner_title %}
+                    <li>
+                    <img src="{{ b_title.image.url }}" alt="Tradeaux">
                         <div class="caption">
-                            <h3>欢迎来到 <span>万林克</span>通信技术公司</h3>
-                            <p>致力于通信技术的发展与改良</p>
+                            <h3>{{b_title.title}}</h3>
+                            {% if b_title.subtitle != none %}
+                                <p>{{ b_title.subtitle }}</p>
+                            {% endif %}
                         </div>
-                </li>
-                <li>
-                    <img src="../static/images/2.jpg" alt="Tradeaux">
-                        <div class="caption">
-                            <h3>路由器技术</h3>
-                        </div>
-                </li>
-                <li>
-                    <img src="../static/images/3.jpg" alt="Tradeaux">
-                        <div class="caption">
-                            <h3>VOIF语音</h3>
-                        </div>
-                </li>
-                <li>
-                    <img src="../static/images/4.jpg" alt="Tradeaux">
-                        <div class="caption">
-                            <h3>网络安全</h3>
-                        </div>
-                </li>
-                <li>
-                    <img src="../static/images/5.jpg" alt="Tradeaux">
-                        <div class="caption">
-                            <h3>无线通讯</h3>
-                        </div>
-                </li>
-                <li>
-                    <img src="../static/images/6.jpg" alt="Tradeaux">
-                        <div class="caption">
-                            <h3>网卡</h3>
-                        </div>
-                </li>
-                <li>
-                    <img src="../static/images/7.jpg" alt="Tradeaux">
-                        <div class="caption">
-                            <h3>专有技术解决方案</h3>
-                        </div>
-                </li>
-
+                    </li>
+                {% endfor %}
             </ul>
         </div>
         <!-- //Slider-Ends-Here -->
@@ -98,43 +64,25 @@
 
 			<h1>公司服务</h1>
 
+
             <div class="container">
                 <div class="area1">
-                    <div class="col-md-4 col-sm-4 air slideanim">
+                    {% for serve in Service_image %}
+                        <div class="col-md-4 col-sm-4 air slideanim">
                         <div class="area-image">
-                            <img src="../static/images/area1.jpg" alt="Tradeaux">
+                            <img src="{{ serve.image.url }}" alt="Tradeaux">
                         </div>
                         <div class="area-info">
-                            <h4>专有技术</h4>
-                            <p>先进可靠</p>
+                            <h4>{{ serve.service.ServiceName }}</h4>
+                            <p>{{ serve.service.ServiceIntro }}</p>
                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 sea slideanim">
-                        <div class="area-image">
-                            <img src="../static/images/area2.jpg" alt="Tradeaux">
                         </div>
-                        <div class="area-info">
-                            <h4>解决方案</h4>
-                            <p>多种解决方案</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 land slideanim">
-                        <div class="area-image">
-                            <img src="../static/images/area3.jpg" alt="Tradeaux">
-                        </div>
-                        <div class="area-info">
-                            <h4>成功案例</h4>
-                            <p>案例介绍</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <div class="clearfix"></div>
                 </div>
             </div>
         </div>
         <!-- //Area-Ends-Here -->
-        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 
         <!-- Offer-Starts-Here -->
         <div class="offer slideanim" id="offer">
@@ -142,46 +90,18 @@
                 <h3>产品中心</h3>
                 <p>产品介绍</p>
                 <div class="offer-grid">
-                    <div class="col-md-6 col-sm-6 offer1 slideanim">
+                    {% for pro_im in Product_Image %}
+                        <div class="col-md-6 col-sm-6 offer1 slideanim">
                         <div class="offer-icon">
-                            <img src="../static/images/o1.png" alt="Tradeaux">
+                            <img src="{{ pro_im.image.url }}" alt="Tradeaux">
                         </div>
                         <div class="offer-info">
-                            <h4>路由器</h4>
-                            <p>路由器产品介绍</p>
+                            <h4>{{ pro_im.product.ProductTypeName }}</h4>
+                            <p>{{ pro_im.product.ProductTypeIntro }}</p>
                         </div>
                         <div class="clearfix"></div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 offer1 slideanim">
-                        <div class="offer-icon">
-                            <img src="../static/images/o2.png" alt="Tradeaux">
-                        </div>
-                        <div class="offer-info">
-                            <h4>VOIF语音</h4>
-                            <p>VOIF语音产品介绍</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 offer1 slideanim">
-                        <div class="offer-icon">
-                            <img src="../static/images/o3.png" alt="Tradeaux">
-                        </div>
-                        <div class="offer-info">
-                            <h4>网络安全</h4>
-                            <p>网络安全产品介绍</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 offer1 slideanim">
-                        <div class="offer-icon">
-                            <img src="../static/images/o4.png" alt="Tradeaux">
-                        </div>
-                        <div class="offer-info">
-                            <h4>无线通讯</h4>
-                            <p> 无线通讯产品介绍</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                         </div>
+                    {% endfor %}
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -195,49 +115,16 @@
                 <p>技术支持文件</p>
 
                 <div class="cover-grid">
-                	<div class="col-md-4 cover-top-grid slideanim">
+                    {% for doc_handle in Document %}
+                        <div class="col-md-4 cover-top-grid slideanim">
                     	<div class="column-wrap clearfix">
                         	<div class="column">
-                            	<a class="caption caption-3" href="#" data-title="路由器" data-description="路由器产品解决方案"><img src="../static/images/c1.jpg" alt="Tradeaux"></a>
+                            	<a class="caption caption-3" href="{{ doc_handle.Document.url }}" data-title="{{ doc_handle.DocumentName }}" data-description="{{ doc_handle.DocumentIntro }}"><img src="{{ doc_handle.DocumentImage.url }}" alt="Tradeaux"></a>
                         	</div>
                     	</div>
-                	</div>
-	                <div class="col-md-4 cover-top-grid slideanim">
-	                    <div class="column-wrap clearfix">
-	                        <div class="column">
-	                            <a class="caption caption-3" href="#" data-title="VOIF语音" data-description="VOIF语音解决方案"><img src="../static/images/c2.jpg" alt="Tradeaux"></a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-4 cover-top-grid slideanim">
-	                    <div class="column-wrap clearfix">
-	                        <div class="column">
-	                            <a class="caption caption-3" href="#" data-title="网络安全" data-description="网络安全解决方案"><img src="../static/images/c3.jpg" alt="Tradeaux"></a>
-	                        </div>
-	                    </div>
-	                </div>
+                	    </div>
+                    {% endfor %}
 
-	                <div class="col-md-4 cover-bottom-grid slideanim">
-	                    <div class="column-wrap clearfix">
-	                        <div class="column">
-	                            <a class="caption caption-3" href="#" data-title="无线通讯" data-description="无线通讯解决方案"><img src="../static/images/c4.jpg" alt="Tradeaux"></a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-4 cover-bottom-grid slideanim">
-	                    <div class="column-wrap clearfix">
-	                        <div class="column">
-	                            <a class="caption caption-3" href="#" data-title="网卡" data-description="网卡解决方案"><img src="../static/images/c5.jpg" alt="Tradeaux"></a>
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="col-md-4 cover-bottom-grid slideanim">
-	                    <div class="column-wrap clearfix">
-	                        <div class="column">
-	                            <a class="caption caption-3" href="#" data-title="定制专有技术" data-description="专有技术解决方案"><img src="../static/images/c6.jpg" alt="Tradeaux"></a>
-	                        </div>
-	                    </div>
-	                </div>
                 	<div class="clearfix"></div>
                 </div>
 
@@ -365,20 +252,23 @@
         		<h3>联系我们</h3>
         		<form class="contact_form">
 
-        			<div class="message">
+                    <form action="/form/" method="POST" autocomplete="off">
+                        <div class="message">
 						<div class="col-md-6 col-sm-6 grid_6 c1">
-							<input type="text" class="text" value="Name" placeholder="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
-							<input type="text" class="text" value="Email" placeholder="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-							<input type="text" class="text" value="Phone" placeholder="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
+							<input type="text" name="name" class="text" value="Name" placeholder="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+							<input type="text" name="email" class="text" value="Email" placeholder="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+							<input type="text" name="phone" class="text" value="Phone" placeholder="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
 						</div>
-
 						<div class="col-md-6 col-sm-6 grid_6 c1">
-							<textarea placeholder="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+							<textarea placeholder="Message" name="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
 						</div>
 			            <div class="clearfix"> </div>
-		        	</div>
+		        	    </div>
 
 					<input type="submit" class="more_btn" value="Send Message">
+                    </form>
+                    {% csrf_token %}
+
 			 	</form>
 		 	</div>
     	</div>
