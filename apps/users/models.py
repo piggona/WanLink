@@ -101,6 +101,25 @@ class ProductImage(models.Model):
         return self.product.ProductTypeName
 
 
+def image_directory_path_support(instance, filename):
+    return 'image/image_{0}/{1}'.format(instance.SupportName, filename)
+
+
+class Support(models.Model):
+    SupportId = models.CharField(max_length=10, verbose_name="支持ID")
+    SupportName = models.CharField(max_length=30, verbose_name="支持名称")
+    SupportIntro = models.TextField(default='-1', null=True, blank=True, verbose_name="支持介绍")
+    SupportImage = models.ImageField(default='-1', null=True, blank=True, upload_to=image_directory_path_support, verbose_name="支持图片")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    class Meta:
+        verbose_name = "支持"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.SupportName
+
+
 class Project(models.Model):
     ProjectId = models.CharField(max_length=30, verbose_name="项目ID")
     ProjectName = models.CharField(max_length=20, verbose_name="项目名")
@@ -194,7 +213,7 @@ class FeedBack(models.Model):
     FeedBackId = models.CharField(max_length=30, verbose_name="反馈ID")
     FeedBackHost = models.CharField(max_length=50, verbose_name='反馈来源')
     FeedBackText = models.TextField(verbose_name="反馈文本")
-    AdminText = models.TextField(verbose_name="管理员回复文本")
+    AdminText = models.TextField(null=True, blank=True, verbose_name="管理员回复文本")
     AdminDocName = models.CharField(max_length=20, verbose_name="文件名", null=True, blank=True)
     AdminDoc = models.FileField(verbose_name="管理员回复文件", null=True, blank=True, upload_to=user_directory_path_feedback)
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")

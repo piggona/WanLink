@@ -133,3 +133,12 @@ class UserMessageAdmin(object):
 
 
 xadmin.site.register(UserMessage, UserMessageAdmin)
+
+
+class SupportAdmin(object):
+    list_display = ['SupportId', 'SupportName', 'SupportIntro', 'SupportImage', 'add_time']
+    search_field = ['SupportId', 'SupportName', 'SupportIntro', 'SupportImage']
+    list_filter = ['SupportId', 'SupportName', 'SupportIntro', 'SupportImage', 'add_time']
+
+
+xadmin.site.register(Support, SupportAdmin)
