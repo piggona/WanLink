@@ -55,6 +55,8 @@ class Firm(models.Model):
     FirmName = models.CharField(max_length=20, verbose_name="公司名称")
     FirmIntro = models.TextField(null=True, blank=True, verbose_name="公司介绍")
     FirmAddr = models.CharField(max_length=50, null=True, verbose_name="公司地址")
+    FirmCity = models.CharField(max_length=50, null=True, verbose_name="公司城市")
+    FirmCountry = models.CharField(max_length=50, null=True, verbose_name="所属国家")
     FirmTel = models.CharField(max_length=50, null=True, verbose_name="公司电话")
     FirmEmail = models.EmailField(verbose_name="公司邮箱")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
@@ -108,8 +110,8 @@ def image_directory_path_support(instance, filename):
 class Support(models.Model):
     SupportId = models.CharField(max_length=10, verbose_name="支持ID")
     SupportName = models.CharField(max_length=30, verbose_name="支持名称")
-    SupportIntro = models.TextField(default='-1', null=True, blank=True, verbose_name="支持介绍")
-    SupportImage = models.ImageField(default='-1', null=True, blank=True, upload_to=image_directory_path_support, verbose_name="支持图片")
+    SupportIntro = models.TextField(null=True, blank=True, verbose_name="支持介绍")
+    SupportImage = models.ImageField(null=True, blank=True, upload_to=image_directory_path_support, verbose_name="支持图片")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     class Meta:

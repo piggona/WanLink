@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': "WanLink",
         'USER': 'root',
         'PASSWORD': "jinzi519108",
-        'HOST': '10.201.14.47',
+        'HOST': '192.168.1.186',
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
     }
 }

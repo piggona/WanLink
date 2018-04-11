@@ -174,7 +174,7 @@
             	<!-- News-Starts-Here -->
                 {% for support in Support %}
 
-                        {% if support.SupportIntro == '-1' %}
+                        {% if support.SupportIntro == ""%}
                             <div class="col-md-4 details-grid locations slideanim">
                                 <h3>{{ support.SupportName }}</h3>
                                 <img src="{{ support.SupportImage.url }}" alt="Tradeaux">
@@ -182,7 +182,7 @@
                         {% endif %}
 
 
-                        {% if support.SupportImage == '-1' %}
+                        {% if support.SupportImage == "" %}
                             <div class="col-md-4 details-grid reviews slideanim" id="about">
                             <h3>{{ support.SupportName }}</h3>
                                 <div class="about-section-left-grid">
@@ -193,8 +193,8 @@
                         {% endif %}
 
                     <!-- 图+文字 -->
-                    {% if support.SupportImage != '-1' %}
-                        {% if support.SupportIntro != '-1' %}
+                    {% if support.SupportImage != "" %}
+                        {% if support.SupportIntro != "" %}
                             <div class="col-md-4 details-grid news slideanim">
                             <h3>{{ support.SupportName}}</h3>
                             <div class="news-top">

@@ -32,16 +32,18 @@ def getProfile(request):
         document = Document.objects.all()
         support = Support.objects.all()
         feed_back = FeedBack.objects.all()
+        company = Firm.objects.all()
 
         if "user_name" in request.COOKIES:
             user_name = request.COOKIES['user_name']
             return render(request, "frontPage.html", {'Banner_title': banner_title, 'Service': service,
                                                       'Service_image': service_image, 'Product_Image': product_image,
                                                       'Document': document, 'Support': support, 'User_name': user_name,
-                                                      'Feed_back': feed_back})
+                                                      'Feed_back': feed_back, 'Company': company})
         return render(request, "frontPage.html", {'Banner_title': banner_title, 'Service': service,
                                                   'Service_image': service_image, 'Product_Image': product_image,
-                                                  'Document': document, 'Support': support, 'Feed_back': feed_back})
+                                                  'Document': document, 'Support': support, 'Feed_back': feed_back,
+                                                  'Company': company})
 
 
 def open(request):
