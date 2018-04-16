@@ -18,7 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -29,7 +28,6 @@ SECRET_KEY = '=4fb#s7+*+!#tr1s=j=gji1q&q93zh(nve$(-%f=#o@!0yrz7w'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -78,7 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'WanLink.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -88,11 +85,10 @@ DATABASES = {
         'NAME': "WanLink",
         'USER': 'root',
         'PASSWORD': "jinzi519108",
-        'HOST': '10.201.14.47',
+        'HOST': '127.0.0.1',
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -112,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -126,18 +121,17 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
 # NEDIA_ROOT,存储上传的文件
-MEDIA_ROOT = os.path.join(BASE_DIR, 'upload/')
-MEDIA_URL = '/upload/'# 浏览器中访问该URL的前缀
+MEDIA_ROOT = os.path.join(BASE_DIR, 'upload/').replace('\\', '/')
+MEDIA_URL = '/upload/'  # 浏览器中访问该URL的前缀
 
-#用户转换
+# 用户转换
 AUTH_USER_MODEL = 'users.Admin'

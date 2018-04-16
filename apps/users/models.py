@@ -36,6 +36,7 @@ class EmailVerifyRecord(models.Model):
 
 class Banner(models.Model):
     title = models.CharField(max_length=100, verbose_name="标题")
+    subtitle = models.CharField(max_length=50, null=True, blank=True, verbose_name="副标题")
     image = models.ImageField(upload_to="banner/%Y/%m", verbose_name="轮播图", max_length=100)
     url = models.URLField(max_length=200, verbose_name="访问地址")
     index = models.IntegerField(default=100, verbose_name="顺序")
@@ -54,6 +55,8 @@ class Firm(models.Model):
     FirmName = models.CharField(max_length=20, verbose_name="公司名称")
     FirmIntro = models.TextField(null=True, blank=True, verbose_name="公司介绍")
     FirmAddr = models.CharField(max_length=50, null=True, verbose_name="公司地址")
+    FirmCity = models.CharField(max_length=50, null=True, verbose_name="公司城市")
+    FirmCountry = models.CharField(max_length=50, null=True, verbose_name="所属国家")
     FirmTel = models.CharField(max_length=50, null=True, verbose_name="公司电话")
     FirmEmail = models.EmailField(verbose_name="公司邮箱")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
@@ -100,6 +103,25 @@ class ProductImage(models.Model):
         return self.product.ProductTypeName
 
 
+def image_directory_path_support(instance, filename):
+    return 'image/image_{0}/{1}'.format(instance.SupportName, filename)
+
+
+class Support(models.Model):
+    SupportId = models.CharField(max_length=10, verbose_name="支持ID")
+    SupportName = models.CharField(max_length=30, verbose_name="支持名称")
+    SupportIntro = models.TextField(null=True, blank=True, verbose_name="支持介绍")
+    SupportImage = models.ImageField(null=True, blank=True, upload_to=image_directory_path_support, verbose_name="支持图片")
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
+
+    class Meta:
+        verbose_name = "支持"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.SupportName
+
+
 class Project(models.Model):
     ProjectId = models.CharField(max_length=30, verbose_name="项目ID")
     ProjectName = models.CharField(max_length=20, verbose_name="项目名")
@@ -134,7 +156,7 @@ class ProjectImage(models.Model):
 class Service(models.Model):
     ServiceId = models.CharField(max_length=30, verbose_name="服务Id")
     ServiceName = models.CharField(max_length=20, verbose_name="服务名")
-    ServiceIntro = models.TextField(max_length=1000, null=True, blank=True, verbose_name=True)
+    ServiceIntro = models.TextField(max_length=1000, null=True, blank=True, verbose_name="服务介绍")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
 
     class Meta:
@@ -172,6 +194,7 @@ def image_directory_path_doc(instance, filename):
 class Document(models.Model):
     DocumentId = models.CharField(max_length=30, verbose_name="文件ID")
     DocumentName = models.CharField(max_length=20, verbose_name="文档名")
+    DocumentIntro = models.CharField(max_length=50, null=True, blank=True, verbose_name="文档介绍")
     Document = models.FileField(verbose_name='文件', upload_to=user_directory_path_doc)
     DocumentImage = models.ImageField(upload_to=image_directory_path_doc, default=0, verbose_name="文件图")
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
@@ -192,7 +215,7 @@ class FeedBack(models.Model):
     FeedBackId = models.CharField(max_length=30, verbose_name="反馈ID")
     FeedBackHost = models.CharField(max_length=50, verbose_name='反馈来源')
     FeedBackText = models.TextField(verbose_name="反馈文本")
-    AdminText = models.TextField(verbose_name="管理员回复文本")
+    AdminText = models.TextField(null=True, blank=True, verbose_name="管理员回复文本")
     AdminDocName = models.CharField(max_length=20, verbose_name="文件名", null=True, blank=True)
     AdminDoc = models.FileField(verbose_name="管理员回复文件", null=True, blank=True, upload_to=user_directory_path_feedback)
     add_time = models.DateTimeField(default=datetime.now, verbose_name="添加时间")
